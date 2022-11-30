@@ -24,5 +24,11 @@ public class Main {
         for (Seller obj : list) {
             System.out.println(obj);
         }
+
+        System.out.println("3° Method: seller findAll");
+        list = sellerDao.findAll();
+        for (Seller obj : list) {
+            System.out.println(obj);
+        }
     }
 }
