@@ -13,6 +13,7 @@ public class Main {
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
+        System.out.println("1° Method: seller findById");
         Seller seller = sellerDao.findById(3);
 
         System.out.println(seller);
