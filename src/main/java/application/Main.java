@@ -1,6 +1,7 @@
 package application;
 
 import model.dao.DaoFactory;
+import model.dao.DepartmentDao;
 import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
@@ -16,6 +17,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
+        DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 
         System.out.println("1° Method: seller findById");
         Seller seller = sellerDao.findById(3);
@@ -49,6 +51,33 @@ public class Main {
         System.out.println("Enter id for delete test: ");
         int id = scanner.nextInt();
         sellerDao.deleteById(id);
+        System.out.println("Delete completed");
+
+        System.out.println("7° Method: department findById");
+        Department obj = departmentDao.findById(1);
+        System.out.println(obj);
+
+        System.out.println("8° Method: department findAll");
+        List <Department> departmentList = departmentDao.findAll();
+        for (Department departmentItem : departmentList) {
+            System.out.println(departmentItem);
+        }
+
+        System.out.println("9° Method: department insert");
+        Department newDepartment = new Department(null, "New department");
+        departmentDao.insert(newDepartment);
+        System.out.println("Inserted! New id = " + newDepartment.getId());
+
+        System.out.println("10° Method: department update");
+        Department departmentToUpdate = departmentDao.findById(1);
+        departmentToUpdate.setName("Updated department");
+        departmentDao.update(departmentToUpdate);
+        System.out.println("Update completed");
+
+        System.out.println("11° Method: department delete");
+        System.out.println("Enter id for delete test: ");
+        id = scanner.nextInt();
+        departmentDao.deleteById(id);
         System.out.println("Delete completed");
 
         scanner.close();

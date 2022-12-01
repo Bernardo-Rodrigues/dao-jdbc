@@ -128,6 +128,7 @@ public class SellerDaoJDBC implements SellerDao {
                 Seller seller = instantiateSeller(resultSet, department);
                 return seller;
             }
+
             return null;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
